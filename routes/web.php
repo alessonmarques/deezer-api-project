@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], function() {
     Route::group(['prefix' => '', 'as' => 'home'], function() {
         Route::get('/', 'FrontController@showHomePage');
-        //Route::get('/logout', 'AuthController@logout')->name('.logout');
+        //
+        Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
     });
 });
