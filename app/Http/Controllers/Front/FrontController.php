@@ -15,13 +15,12 @@ class FrontController extends Controller
 
     public function debugDeezer()
     {
-        //$deezer = new Deezer();
-        //$response = $deezer->getUser(1439842866);
+        $user = new User(1439842866);
+        $user->get();
 
-        $user = new User();
-        $response = $user->getUser(1439842866);
+        $flow = $user->getFlow();
 
 
-        dd(json_decode($response));
+        dd($flow);
     }
 }
