@@ -18,9 +18,8 @@ class FrontController extends Controller
         $user = new User(1439842866);
         $user->get();
 
-        $flow = $user->getFlow();
+        $artists = $user->getArtists(['index' => 25]);
 
-
-        dd($flow);
+        dd(json_decode($artists));
     }
 }

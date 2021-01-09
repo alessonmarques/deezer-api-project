@@ -11,12 +11,12 @@
 
         private $path;
 
-        function __construct($service = '', $id = '', $method = '', $parameters = '')
+        function __construct($service = '', $id = '', $method = '', $parameters = [])
         {
             $this->service      =   $service;
             $this->id           =   $id;
             $this->method       =   $method;
-            $this->parameters   =   "?{$parameters}";
+            $this->parameters   =   $this->constructParameterQueryString($parameters);
 
             $this->constructPath();
         }
@@ -41,13 +41,27 @@
 
         public function setParameters($parameters)
         {
-            $this->parameters   =   "?{$parameters}";
+            $this->parameters   =   $this->constructParameterQueryString($parameters);
             $this->constructPath();
         }
 
         public function getUrn()
         {
             return $this->path;
+        }
+
+        private function constructParameterQueryString($parameters)
+        {
+            $queryString = [];
+
+            foreach($parameters as $parameterName => $parameterValue)
+            {
+                $queryString[] = "{$parameterName}={$parameterValue}";
+            }
+            $queryString = implode('&', $queryString);
+            $queryString = "?{$queryString}";
+
+            return $queryString;
         }
 
         private function constructPath()
