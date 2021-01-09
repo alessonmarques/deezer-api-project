@@ -1,0 +1,19 @@
+@import "../../../../../../node_modules/bootstrap-select/sass/bootstrap-select.scss";
+
+.dropdown-item.active, .dropdown-item:active{
+    background-color: $color-front-default;
+    color: #fbfbfb;
+
+}
+
+.bootstrap-select > select.mobile-device:focus * .dropdown-toggle, .bootstrap-select .dropdown-toggle:focus{
+    outline: none !important;
+}
+
+.bootstrap-select:not([class*="col-"]):not([class*="form-control"]):not(.input-group-btn){
+    width: 100%;
+}
+
+.bootstrap-select .bs-ok-default::after {
+    color: $color-front-default;
+}

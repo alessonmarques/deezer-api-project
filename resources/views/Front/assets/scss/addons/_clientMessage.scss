@@ -1,0 +1,46 @@
+.clientMessage{
+    width: 15vw;
+    min-width: 19em;
+    display: block;
+    position: absolute;
+    right: 30px;
+    z-index: 999999;
+}
+
+
+.clientMessage > span > .messageBox{
+
+    padding: 20px 20px 15px 20px;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
+    border-bottom: 5px solid $dark;
+    margin-top: 15px;
+
+    animation: 3s ease-in-out 0s 1 normal forwards running fadingInOut;
+}
+
+/* Here is the animation (keyframes) */
+@keyframes fadingOut
+{
+    0% { opacity: 0; }
+    15% { opacity: 1; }
+    100% { opacity: 1; }
+}
+@keyframes fadingOut
+{
+    0% { opacity: 1; }
+    85% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes fadingInOut
+{
+    0% { opacity: 0; }
+    5% { opacity: 1; }
+    90% { opacity: 1; }
+    100% { opacity: 0; }
+}
+@keyframes slideRight
+{
+    0% { right: -230px; }
+    100% { right: 30px; }
+}
