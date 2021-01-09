@@ -17,7 +17,7 @@ class FrontController extends Controller
     {
         $deezer = new Deezer();
 
-        $response = $deezer->getUserPlaylists(1439842866);
+        $response = $deezer->getUser(1439842866);
 
         dd(json_decode($response));
     }

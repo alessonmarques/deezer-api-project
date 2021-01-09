@@ -2,9 +2,6 @@
 
 namespace App\Support;
 
-use Exception;
-use App\Support\ApiUrn;
-
 class Deezer extends ApiStandard
 {
     function __construct()
