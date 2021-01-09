@@ -18,7 +18,6 @@ class Message
 
     public function error(string $message): Message
     {
-        //$this->type = 'error';
         $this->type = 'danger';
         $this->text = $message;
         return $this;

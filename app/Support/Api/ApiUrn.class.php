@@ -4,9 +4,6 @@
 
     class ApiUrn
     {
-        //deezer exemple
-        //service/id/method/?parameters
-
         private $service;
         private $id;
         private $method;
