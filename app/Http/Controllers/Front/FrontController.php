@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-use App\Support\Deezer;
+use App\Support\Artist;
 use App\Support\User;
 
 class FrontController extends Controller
@@ -17,9 +17,13 @@ class FrontController extends Controller
     {
         $user = new User(1439842866);
         $user->get();
+        $info = $user->getFlow();
+        //
+        $artist = new Artist(7299518);
+        $artist->get();
+        $info = $artist->getTop();
+        //
 
-        $artists = $user->getArtists(['index' => 25]);
-
-        dd(json_decode($artists));
+        dd(json_decode($info));
     }
 }
