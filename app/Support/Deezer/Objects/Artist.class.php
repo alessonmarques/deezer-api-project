@@ -15,6 +15,7 @@ class Artist extends Deezer
         if(isset($id) && !empty($id))
         {
             $this->setId($id);
+            $this->get();
         }
     }
 
@@ -90,10 +91,10 @@ class Artist extends Deezer
     }
 
     //
-    private function set($artistInfo)
+    private function set($classInfo)
     {
-        $artistInfo = json_decode($artistInfo);
-        foreach($artistInfo as $attribute => $value)
+        $classInfo = json_decode($classInfo);
+        foreach($classInfo as $attribute => $value)
         {
             $this->$attribute = $value;
         }
