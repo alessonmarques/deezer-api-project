@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class User extends Deezer
+class User extends DeezerObject
 {
     const OBJECT_SERVICE = 'user';
 
@@ -17,20 +17,6 @@ class User extends Deezer
             $this->setId($id);
             $this->get();
         }
-    }
-
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $userInfo = $this->communicate('', 'GET', $request);
-        $this->set($userInfo);
-
-        return $userInfo;
     }
 
     function getPermissions()
@@ -169,14 +155,6 @@ class User extends Deezer
         return $userTracks;
     }
 
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
+
 
 }

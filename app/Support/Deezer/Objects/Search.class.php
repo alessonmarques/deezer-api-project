@@ -2,9 +2,9 @@
 
 namespace App\Support;
 
-class Radio extends Deezer
+class Search extends DeezerObject
 {
-    const OBJECT_SERVICE = 'radio';
+    const OBJECT_SERVICE = 'search';
 
     protected $id;
 
@@ -17,20 +17,6 @@ class Radio extends Deezer
             $this->setId($id);
             $this->get();
         }
-    }
-
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $artistInfo = $this->communicate('', 'GET', $request);
-        $this->set($artistInfo);
-
-        return $artistInfo;
     }
 
 
@@ -97,14 +83,6 @@ class Radio extends Deezer
 
         return $searchUser;
     }
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
+
 
 }

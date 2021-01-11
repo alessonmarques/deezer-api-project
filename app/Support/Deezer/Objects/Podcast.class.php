@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class Podcast extends Deezer
+class Podcast extends DeezerObject
 {
     const OBJECT_SERVICE = 'podcast';
 
@@ -19,20 +19,6 @@ class Podcast extends Deezer
         }
     }
 
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $artistInfo = $this->communicate('', 'GET', $request);
-        $this->set($artistInfo);
-
-        return $artistInfo;
-    }
-
 
     function getPodcast($parameters = [])
     {
@@ -42,14 +28,6 @@ class Podcast extends Deezer
         return $podcastEpisodes;
     }
 
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
+
 
 }

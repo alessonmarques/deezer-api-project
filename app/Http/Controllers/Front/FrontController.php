@@ -34,8 +34,15 @@ class FrontController extends Controller
             $chart = new Chart(1159617832);
             $chart->get();
             $info = $chart->getArtists();
+            //
+            $track = new Track(3135555);
+            $track->setId(3135556);
+            $info = $track->get();
+            //
         */
-        $track = new Track(3135556);
-        dd(($track));
+        $album = new Album(10504582);
+        $album->get();
+        $info = $album->getFans();
+        dd(json_decode($info));
     }
 }

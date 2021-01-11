@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class Options extends Deezer
+class Options extends DeezerObject
 {
     const OBJECT_SERVICE = 'options';
 
@@ -19,28 +19,6 @@ class Options extends Deezer
         }
     }
 
-    function setId($id)
-    {
-        $this->id = $id;
-    }
 
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $albumInfo = $this->communicate('', 'GET', $request);
-        $this->set($albumInfo);
-
-        return $albumInfo;
-    }
-
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
 
 }

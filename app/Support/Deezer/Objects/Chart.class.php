@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class Chart extends Deezer
+class Chart extends DeezerObject
 {
     const OBJECT_SERVICE = 'chart';
 
@@ -17,20 +17,6 @@ class Chart extends Deezer
             $this->setId($id);
             $this->get();
         }
-    }
-
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $albumInfo = $this->communicate('', 'GET', $request);
-        $this->set($albumInfo);
-
-        return $albumInfo;
     }
 
     function getTracks($parameters = [])
@@ -72,15 +58,4 @@ class Chart extends Deezer
 
         return $chartPodcasts;
     }
-
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
-
 }

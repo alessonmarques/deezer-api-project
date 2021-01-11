@@ -2,7 +2,7 @@
 
 namespace App\Support;
 
-class Artist extends Deezer
+class Artist extends DeezerObject
 {
     const OBJECT_SERVICE = 'artist';
 
