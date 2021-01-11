@@ -18,6 +18,13 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
     Route::group(['prefix' => '', 'as' => 'home'], function() {
         Route::get('/', 'FrontController@showHomePage');
         //
-        Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
+        Route::group(['prefix' => '', 'as' => '.deezer'], function() {
+            Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
+            //
+            Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
+            Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');
+            //
+            Route::get('/deez-token', 'FrontController@deezerGetToken')->name('.token');
+        });
     });
 });

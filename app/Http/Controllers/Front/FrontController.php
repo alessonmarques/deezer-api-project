@@ -3,11 +3,16 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+
+use App\Support\Deezer;
+//
 use App\Support\Album;
 use App\Support\Artist;
 use App\Support\User;
 use App\Support\Chart;
 use App\Support\Track;
+use App\Support\Search;
+use GuzzleHttp\Psr7\Header;
 
 class FrontController extends Controller
 {
@@ -20,29 +25,40 @@ class FrontController extends Controller
     {
         /*
             $user = new User(1439842866);
-            $user->get();
             $info = $user->getFlow();
             //
             $artist = new Artist(7299518);
-            $artist->get();
             $info = $artist->getTop();
             //
             $album = new Album(10504582);
-            $album->get();
             $info = $artist->getFans();
             //
             $chart = new Chart(1159617832);
-            $chart->get();
             $info = $chart->getArtists();
             //
-            $track = new Track(3135555);
-            $track->setId(3135556);
-            $info = $track->get();
-            //
+            $search = new Search();
+            $info = $album->getArtist(['q' => 'djonga', 'order' => 'ranking']);
         */
-        $album = new Album(10504582);
-        $album->get();
-        $info = $album->getFans();
-        dd(json_decode($info));
+
+        $track = new Track(3135556);
+        dd($track);
+    }
+
+    public function deezerLogin()
+    {
+        $app = new Deezer();
+        return $app->authUser();
+    }
+
+    public function deezerLoginCallBack()
+    {
+        $app = new Deezer();
+        return $app->authTreatment();
+    }
+
+    public function deezerGetToken()
+    {
+        $app = new Deezer();
+        return $app->generateAccessToken();
     }
 }

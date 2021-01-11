@@ -8,17 +8,18 @@ class Search extends DeezerObject
 
     protected $id;
 
-    function __construct($id = 0)
+    function __construct()
     {
         parent::__construct();
-
-        if(isset($id) && !empty($id))
-        {
-            $this->setId($id);
-            $this->get();
-        }
     }
 
+    function getBroad($parameters = [])
+    {
+        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, '', $parameters);
+        $searchAlbum = $this->communicate('', 'GET', $request);
+
+        return $searchAlbum;
+    }
 
     function getAlbum($parameters = [])
     {

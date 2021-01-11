@@ -30,7 +30,6 @@ class ApiStandard
                     curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, "GET");
                 break;
                 case "POST":
-                    //curl_setopt($cURL, CURLOPT_POST, 1);
                     curl_setopt($cURL, CURLOPT_CUSTOMREQUEST, "POST");
                 break;
                 case "PUT":

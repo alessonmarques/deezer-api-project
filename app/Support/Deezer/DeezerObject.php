@@ -22,7 +22,7 @@ class DeezerObject extends Deezer
 
     function get()
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
+        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, '', ['access_token' => $this->token]);
         $classInfo = $this->communicate('', 'GET', $request);
         $this->set($classInfo);
 
