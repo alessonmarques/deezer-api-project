@@ -19,21 +19,6 @@ class Artist extends DeezerObject
         }
     }
 
-    function setId($id)
-    {
-        $this->id = $id;
-    }
-
-    function get()
-    {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id);
-        $artistInfo = $this->communicate('', 'GET', $request);
-        $this->set($artistInfo);
-
-        return $artistInfo;
-    }
-
-
     function getTop($parameters = [])
     {
         $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'top', $parameters);
@@ -89,15 +74,4 @@ class Artist extends DeezerObject
 
         return $artistPlaylists;
     }
-
-    //
-    private function set($classInfo)
-    {
-        $classInfo = json_decode($classInfo);
-        foreach($classInfo as $attribute => $value)
-        {
-            $this->$attribute = $value;
-        }
-    }
-
 }
