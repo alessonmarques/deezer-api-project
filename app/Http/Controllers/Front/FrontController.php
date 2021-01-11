@@ -5,20 +5,26 @@ namespace App\Http\Controllers\Front;
 use App\Http\Controllers\Controller;
 
 use App\Support\Deezer;
-//
-use App\Support\Album;
-use App\Support\Artist;
-use App\Support\User;
-use App\Support\Chart;
-use App\Support\Track;
-use App\Support\Search;
-use GuzzleHttp\Psr7\Header;
+
+use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
 {
     public function showHomePage()
     {
-        return view('front.pages.home');
+        if(Session::has('user'))
+        {
+            return view('front.pages.home');
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showLoginPage()
+    {
+        return view('front.pages.login');
     }
 
     public function debugDeezer()
@@ -38,16 +44,24 @@ class FrontController extends Controller
             //
             $search = new Search();
             $info = $album->getArtist(['q' => 'djonga', 'order' => 'ranking']);
-        */
-
         $track = new Track(3135556);
         dd($track);
+        */
+
     }
 
     public function deezerLogin()
     {
         $app = new Deezer();
         return $app->authUser();
+    }
+
+    public function deezerLogout()
+    {
+        Session::forget('user');
+        Session::forget('app');
+
+        return view('front.pages.login');
     }
 
     public function deezerLoginCallBack()

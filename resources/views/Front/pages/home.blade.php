@@ -2,6 +2,12 @@
     use Illuminate\Support\Facades\Session;
     use App\Support\User;
 
+    $user = Session::get('user');
+
+    // echo "<pre>";
+    // print_r($user);
+    // echo "</pre>";
+
 ?>
 @extends('front.main')
 
@@ -12,14 +18,13 @@
 
     <div class="container d-flex">
         <div class="row">
-            @if( !Session::has('user') )
-
-                <a href="{{route('front.home.deezer.login')}}"
-                    target="popup"
-                    onclick="window.open('{{route('front.home.deezer.login')}}','popup','width=800,height=475'); return false;">
-                    Login
-                </a>
-            @endif
+                <div>
+                    <img src="{{ $user->picture }}" title="@{{ $user->name }} profile picture">
+                    <span>{{ $user->firstname }} {{ $user->lastname }}</span>
+                </div>
+                {{-- <div>
+                    Logout
+                </div> --}}
         </div>
     </div>
 @stop

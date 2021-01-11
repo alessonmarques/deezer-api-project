@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Session;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,6 +26,7 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
             //
             Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
             Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');
+            Route::get('/deez-logout', 'FrontController@deezerLogout')->name('.logout');
             //
             Route::get('/deez-token', 'FrontController@deezerGetToken')->name('.token');
         });
