@@ -84,11 +84,14 @@ class Deezer extends ApiStandard
                 $this->code = $_REQUEST['code'];
                 $this->save();
                 $this->generateAccessToken();
+
+                $urlDestino = route('front.home');
+
                 echo "<script>
                             window.onunload = refreshParent;
                             function refreshParent()
                             {
-                                window.opener.location.reload();
+                                window.opener.location.href = '{$urlDestino}';
                             }
 
                             window.close();

@@ -61,7 +61,7 @@ class FrontController extends Controller
         Session::forget('user');
         Session::forget('app');
 
-        return view('front.pages.login');
+        return redirect(route('front.home'));
     }
 
     public function deezerLoginCallBack()
