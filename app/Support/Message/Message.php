@@ -1,5 +1,5 @@
 <?php
-namespace App\Support;
+namespace app\Support\Message;
 
 
 class Message

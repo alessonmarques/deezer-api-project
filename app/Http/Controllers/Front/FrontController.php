@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 
-use App\Support\Deezer;
-
+use app\Support\Deezer;
+use app\Support\Track;
 use Illuminate\Support\Facades\Session;
 
 class FrontController extends Controller
@@ -44,10 +44,10 @@ class FrontController extends Controller
             //
             $search = new Search();
             $info = $album->getArtist(['q' => 'djonga', 'order' => 'ranking']);
-        $track = new Track(3135556);
-        dd($track);
         */
 
+        $track = new Track(3135556);
+        dd($track);
     }
 
     public function deezerLogin()
