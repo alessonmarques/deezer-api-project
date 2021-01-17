@@ -6279,6 +6279,11 @@ button.bg-front:focus {
   background-color: transparent !important;
 }
 
+.bg-light-dark {
+  color: #fff;
+  background-color: #495057;
+}
+
 .border {
   border: 1px solid #dee2e6 !important;
 }

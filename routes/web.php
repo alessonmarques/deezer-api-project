@@ -24,8 +24,6 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
         Route::group(['prefix' => '', 'as' => '.deezer'], function() {
             Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
             //
-            Route::get('/test', 'FrontController@testBootstrap')->name('.test');
-            //
             Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
             Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');
             Route::get('/deez-logout', 'FrontController@deezerLogout')->name('.logout');

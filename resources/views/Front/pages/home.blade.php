@@ -5,28 +5,18 @@
     $user = Session::get('user');
 
 ?>
-@extends('front.main')
+@extends('Front.internal_page_layout')
 
 @section('head-private')
 @stop
 
-@section('content')
-    <div id="layoutSidenav_content">
-        <div class="container">
-            <div class="row">
-                {{-- <div class="card mt-2">
-                    <span class="text-dark mb-2">{{ $user->firstname }} {{ $user->lastname }}</span>
-                    <img src="{{ $user->picture }}" title="{{'@'.$user->name }} profile picture" class="" width="150px" style="border-radius: 30%">
-                    <a href="{{route('front.home.deezer.logout')}}" class="my-2" target="_self">
-                        Logout
-                    </a>
-                </div> --}}
 
+@section('internal_content')
+    <div class="row pt-2 px-2">
 
-            </div>
-        </div>
     </div>
 @stop
 
 @section('foot-private')
 @stop
+
