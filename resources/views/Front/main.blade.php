@@ -2,7 +2,7 @@
     $data = [];
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
         @include('front.includes.header', $data)
 

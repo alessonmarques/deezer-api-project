@@ -35,6 +35,10 @@ mix
     ], 'public/front/js/jquery.min.js')
 
     .scripts([
+        'node_modules/bootstrap/dist/js/bootstrap.bundle.min.js',
+    ], 'public/front/js/bootstrap.bundle.min.js')
+
+    .scripts([
         'resources/views/front/assets/js/swal/swal.min.js',
     ], 'public/front/js/swal.min.js')
 
@@ -50,7 +54,7 @@ mix
 
     .scripts([
         'resources/views/front/assets/js/sb_admin/scripts.js',
-        'resources/views/front/assets/js/sb_admin/datachart/datatables.js',
+        //'resources/views/front/assets/js/sb_admin/datachart/datatables.js',
     ], 'public/front/js/sb_admin.js')
 
     .options({

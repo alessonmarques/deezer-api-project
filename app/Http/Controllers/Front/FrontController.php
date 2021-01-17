@@ -27,6 +27,13 @@ class FrontController extends Controller
         return view('front.pages.login');
     }
 
+    //
+
+    public function testBootstrap()
+    {
+        return view('front.pages.test');
+    }
+
     public function debugDeezer()
     {
         /*
