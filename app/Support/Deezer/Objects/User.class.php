@@ -2,6 +2,9 @@
 
 namespace app\Support;
 
+use PhpParser\Node\Expr\Cast\String_;
+use Ramsey\Uuid\Type\Integer;
+
 class User extends DeezerObject
 {
     const OBJECT_SERVICE = 'user';
@@ -91,9 +94,16 @@ class User extends DeezerObject
         return $userFollowers;
     }
 
-    function getHistory()
+    function getHistory(Int $limit = 10)
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'history');
+        $parameters = ['limit' => $limit];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
+        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'history', $parameters);
         $userHistory = $this->communicate('', 'GET', $request);
 
         return $userHistory;
@@ -117,7 +127,14 @@ class User extends DeezerObject
 
     function getPersonalSongs()
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'personalSongs');
+        $parameters = [];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
+        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'personal_songs', $parameters);
         $userPersonalSongs = $this->communicate('', 'GET', $request);
 
         return $userPersonalSongs;
@@ -139,9 +156,19 @@ class User extends DeezerObject
         return $userRadios;
     }
 
-    function getRecommendations()
+    function getRecommendations(String $type, Int $limit = 10)
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'recommendations');
+        /**
+         * @var type (albums, artists, playlists, tracks, radios)
+         */
+        $parameters = ['limit' => $limit];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
+        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, "recommendations/{$type}", $parameters);
         $userRecommendations = $this->communicate('', 'GET', $request);
 
         return $userRecommendations;

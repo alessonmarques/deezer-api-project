@@ -7,5 +7,6 @@
             @yield('internal_content')
         </div>
     </div>
+
 @stop
 

@@ -59,6 +59,6 @@ class ApiStandard
             $response = $e->getMessage();
         }
 
-        return $response;
+        return json_decode($response);
     }
 }

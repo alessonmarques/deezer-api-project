@@ -4,6 +4,8 @@ namespace app\Support;
 
 class DeezerObject extends Deezer
 {
+    public $tokenDestroyTime;
+
     function __construct($id = 0)
     {
         parent::__construct();
@@ -38,7 +40,6 @@ class DeezerObject extends Deezer
 
     private function set($classInfo)
     {
-        $classInfo = json_decode($classInfo);
         foreach($classInfo as $attribute => $value)
         {
             $this->$attribute = $value;

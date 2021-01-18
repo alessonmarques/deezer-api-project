@@ -10,7 +10,7 @@ class Deezer extends ApiStandard
     const     APP_SECRET            = '';
     const     APP_CALL_BACK_URL     = 'http://localhost/deezer-api-project/public/deez-callback';
 
-    const     APP_PERMISSIONS       = 'basic_access,email';
+    const     APP_PERMISSIONS       = 'basic_access,email,listening_history';
 
     //
     public    $csrf;
@@ -124,7 +124,7 @@ class Deezer extends ApiStandard
             $this->token                    = $reponse->access_token;
             $this->tokenExpirationTime      = $reponse->expires;
             $this->tokenVerificationTime    = date('Y-m-d H:i:s');
-            $this->tokenDestroyTime         = date('Y-m-d H:i:s', strtotime('+{$this->tokenExpirationTime} sec', strtotime($this->tokenVerificationTime)));
+            $this->tokenDestroyTime         = date('Y-m-d H:i:s', strtotime("+{$this->tokenExpirationTime} sec", strtotime($this->tokenVerificationTime)));
             //
             $user = new User('me');
             Session::put('user', $user);
