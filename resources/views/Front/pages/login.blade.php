@@ -22,15 +22,39 @@
 
     <div class="card-md">
         <div id="layoutSidenav_content">
-            <div class="container">
+            {{-- <div class="container">
                 <div class="row">
-                    <a href="{{ route('front.home.deezer.login') }}"
-                        target="popup"
-                        onclick="window.open('{{route('front.home.deezer.login')}}','popup','width=800,height=475'); return false;">
-                        Login
-                    </a>
+
+                </div>
+            </div> --}}
+
+            <div class="row d-flex vh-100">
+                <div class="container d-flex align-items-center justify-content-center">
+                    <div>
+                        <div class="row">
+                            <div class="logo">
+                                {{-- <img src="" alt="Logo" width="250" class="logo"> --}}
+                                <span class="h1 text-front text-center bold">deezer-api-project</span>
+                            </div>
+                        </div>
+                        <div class="row card p-5">
+                            <div class="form-group my-3">
+                                <a href="{{ route('front.home.deezer.login') }}"
+                                    target="popup"
+                                    class="btn btn-block btn-front"
+                                    onclick="window.open('{{route('front.home.deezer.login')}}','popup','width=800,height=475'); return false;">
+                                    Login
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row d-block text-light text-center">
+                            Developed by <a href="https://alesson.com.br/" class="text-front">www.<b>alesson</b>.com.br</a>
+                        </div>
+                    </div>
                 </div>
             </div>
+        </div>
+
         </div>
     </div>
 

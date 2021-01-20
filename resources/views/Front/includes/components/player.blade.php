@@ -15,7 +15,7 @@
 <iframe
     id='dzplayer'
     dztype='dzplayer'
-    src='https://www.deezer.com/plugins/player?type={{$type}}&id={{$id}}&format=classic&color=1e7f71&autoplay=false&playlist=true&width=300&height=62'
+    src='https://www.deezer.com/plugins/player?type={{$type}}&id={{$id}}&format=classic&color=ef5466&autoplay=false&playlist=true&width=300&height=62'
     scrolling='no'
     frameborder='0'
     style='border:none; overflow:hidden; height: 62px;'
