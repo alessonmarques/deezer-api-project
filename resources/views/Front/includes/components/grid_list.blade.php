@@ -5,10 +5,11 @@
     use app\Support\Radio;
     use app\Support\Track;
 
+
 ?>
 <div    class="row py-2 px-2 d-block"
         style="overflow: hidden;">
-    <h4>{{ ucwords($type) }}</h4>
+    <h4 class="font-weight-bold">{{ ucwords($type) }}</h4>
     <hr>
     <div    id="card_n#"
             class="card-deck card-list-itens"
@@ -46,7 +47,7 @@
                 $gridObjectData    = $deezerObject->getGridData($item);
 
                 $cover             = $gridObjectData->cover;
-                $title             = strlen($gridObjectData->title) > 30 ? substr($gridObjectData->title, 0, 27)."..." : $gridObjectData->title;
+                $title             = strlen($gridObjectData->title) > MAX_CARATCTER_NAME ? substr($gridObjectData->title, MAX_CARATCTER_NAME_START, MAX_CARATCTER_NAME_LIMIT)."..." : $gridObjectData->title;
 
                 $description       = $gridObjectData->description;
                 $access_link       = $gridObjectData->access_link;
