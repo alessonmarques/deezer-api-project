@@ -14,7 +14,7 @@ All informations about the API usage you can found in the url: https://developer
 
 ```sh
 $ git init
-$ git clone https://github.com/alessonmarques/deezer-api-project.github
+$ git clone https://github.com/alessonmarques/deezer-api-project.git
 $ npm update
 $ composer update
 $ composer dump-autoload -o
