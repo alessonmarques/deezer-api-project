@@ -182,6 +182,4 @@ class User extends DeezerObject
         return $userTracks;
     }
 
-
-
 }

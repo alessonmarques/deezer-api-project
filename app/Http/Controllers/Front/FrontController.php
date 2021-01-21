@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
-
+use app\Support\Artist;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -16,23 +16,12 @@ class FrontController extends Controller
         if(Session::has('user'))
         {
             $user = Session::get('user');
-            if(date('Y-m-d H:i:s') >= $user->tokenDestroyTime) $this->deezerGetToken();
+
+            if(date('Y-m-d H:i:s') >= $user->tokenDestroyTime) return false;
+
             return true;
         }
         return false;
-    }
-
-
-    public function showHomePage()
-    {
-        if($this->isLoggedIn())
-        {
-            return view('front.pages.home');
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
     }
 
     public function showLoginPage()
@@ -40,8 +29,18 @@ class FrontController extends Controller
         return view('front.pages.login');
     }
 
-    /*  */
-
+    public function showHomePage()
+    {
+        if($this->isLoggedIn())
+        {
+            return redirect(route('front.home.deezer.music'));
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+    /* */
     public function showMusics()
     {
         if($this->isLoggedIn())
@@ -51,12 +50,12 @@ class FrontController extends Controller
             $albums     = $user->getRecommendations('albums');
             $artists    = $user->getRecommendations('artists');
             $playlists  = $user->getRecommendations('playlists');
-            $tracks     = $user->getRecommendations('tracks');
+            // $tracks     = $user->getRecommendations('tracks');
             $radios     = $user->getRecommendations('radios');
 
             $recents    = $user->getHistory();
 
-            $data = compact('albums', 'artists', 'playlists', 'tracks', 'radios', 'recents');
+            $data = compact('recents', /*'tracks',*/ 'artists', 'radios', 'albums', 'playlists');
             return view('front.pages.music')->with('data', $data);
         }
         else
@@ -152,5 +151,27 @@ class FrontController extends Controller
     {
         $app = new Deezer();
         return $app->generateAccessToken();
+    }
+
+    /* */
+
+    public function deezerPlay(Request $request)
+    {
+        if($this->isLoggedIn())
+        {
+            $app = Session::get('app');
+
+            $app->track = new \stdClass();
+            $app->track->type   = $request->type;
+            $app->track->id     = $request->id;
+
+            Session::put('app', $app);
+
+            return redirect()->back();
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
     }
 }

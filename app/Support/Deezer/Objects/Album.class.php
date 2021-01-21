@@ -2,9 +2,12 @@
 
 namespace app\Support;
 
+use stdClass;
+
 class Album extends DeezerObject
 {
-    const OBJECT_SERVICE = 'album';
+    const OBJECT_SERVICE        = 'album';
+    const OBJECT_PLAYER_TYPE    = 'album';
 
     protected $id;
 
@@ -41,6 +44,20 @@ class Album extends DeezerObject
         $artistFans = $this->communicate('', 'GET', $request);
 
         return $artistFans;
+    }
+
+    //
+    function getGridData($item)
+    {
+        $gridObjectData = new \stdClass();
+
+        $gridObjectData->cover         = $item->cover_medium;
+        $gridObjectData->access_link   = route('front.home', []);
+        $gridObjectData->play_link     = route('front.home.deezer.play', ['type' => $this::OBJECT_PLAYER_TYPE, 'id' => $item->id]);
+        $gridObjectData->title         = $item->title;
+        $gridObjectData->description   = "{$item->nb_tracks} tracks";
+
+        return $gridObjectData;
     }
 
 }

@@ -7,3 +7,27 @@
 @import "addons/bootstrap-select";
 
 @import "addons/clientMessage";
+
+.play_button {
+    cursor: pointer;
+    color: #f73950;
+    opacity: .75;
+    font-size: 3.5rem;
+
+    /* Apply to all changed properties */
+    transition: all 0.25s ease-in-out;
+}
+
+.play_button:hover {
+    opacity: .95;
+    font-size: 3.7rem;
+}
+.card-img-top{
+    cursor: pointer;
+
+    /* Apply to all changed properties */
+    transition: all 0.25s ease-in-out;
+}
+.card-img-top:hover{
+    filter: brightness(80%);
+}

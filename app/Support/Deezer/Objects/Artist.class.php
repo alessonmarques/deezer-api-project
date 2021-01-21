@@ -4,7 +4,8 @@ namespace app\Support;
 
 class Artist extends DeezerObject
 {
-    const OBJECT_SERVICE = 'artist';
+    const OBJECT_SERVICE        = 'artist';
+    const OBJECT_PLAYER_TYPE    = 'artist';
 
     protected $id;
 
@@ -74,4 +75,20 @@ class Artist extends DeezerObject
 
         return $artistPlaylists;
     }
+
+    //
+    function getGridData($item)
+    {
+        $gridObjectData = new \stdClass();
+
+        $gridObjectData->cover         = $item->picture_medium;
+        $gridObjectData->access_link   = route('front.home', []);
+        $gridObjectData->play_link     = route('front.home.deezer.play', ['type' => $this::OBJECT_PLAYER_TYPE, 'id' => $item->id]);
+
+        $gridObjectData->title         = $item->name;
+        $gridObjectData->description   = "";
+
+        return $gridObjectData;
+    }
+
 }

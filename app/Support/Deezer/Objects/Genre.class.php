@@ -47,6 +47,19 @@ class Genre extends DeezerObject
     }
 
 
+    //
+    function getGridData($item)
+    {
+        $gridObjectData = new \stdClass();
+
+        $gridObjectData->cover         = $item->cover_medium;
+        $gridObjectData->access_link   = route('front.home', []);
+        $gridObjectData->play_link     = route('front.home.deezer.play', ['type' => $this::OBJECT_PLAYER_TYPE, 'id' => $item->id]);
+        $gridObjectData->title         = $item->title;
+        $gridObjectData->description   = "{$item->nb_tracks} tracks";
+
+        return $gridObjectData;
+    }
 
 
 }

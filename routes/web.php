@@ -21,10 +21,12 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
     Route::group(['prefix' => '', 'as' => 'home'], function() {
         Route::get('/', 'FrontController@showHomePage');
 
-        /* DEEZER */
+        /*  DEEZER */
         Route::group(['prefix' => '', 'as' => '.deezer'], function() {
+            /*  MUSIC CONTROLL */
+            Route::get('/play', 'FrontController@deezerPlay')->name('.play');
 
-            /* OPTIONS */
+            /*  OPTIONS */
             Route::group(['prefix' => 'music', 'as' => '.music'], function() {
                 Route::get('/', 'FrontController@showMusics');
             });
@@ -39,13 +41,13 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
             });
             Route::group(['prefix' => 'search', 'as' => '.search'], function() {
                 Route::get('/', 'FrontController@showSearchs');
-                Route::post('/perform', 'FrontController@performSearch');
+                Route::post('/perform', 'FrontController@performSearch')->name('.perform');
             });
 
-            /* DEBUG */
+            /*  DEBUG */
             Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
 
-            /* ACCESS CONTROL */
+            /*  ACCESS CONTROL */
             Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
             Route::get('/deez-token', 'FrontController@deezerGetToken')->name('.token');
             Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');

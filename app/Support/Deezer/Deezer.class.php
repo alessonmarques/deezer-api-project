@@ -118,15 +118,17 @@ class Deezer extends ApiStandard
         $request    = new ApiUrn('oauth', 'access_token.php', '', $parameters);
         $requestUrl = "{$this->connectUrl}{$request->getUrn()}";
 
-        $reponse    = json_decode(file_get_contents($requestUrl));
-        if(isset($reponse) && !empty($reponse))
+        $response   = json_decode(file_get_contents($requestUrl));
+
+        if(isset($response) && !empty($response))
         {
-            $this->token                    = $reponse->access_token;
-            $this->tokenExpirationTime      = $reponse->expires;
+            $this->token                    = $response->access_token;
+            $this->tokenExpirationTime      = $response->expires;
             $this->tokenVerificationTime    = date('Y-m-d H:i:s');
             $this->tokenDestroyTime         = date('Y-m-d H:i:s', strtotime("+{$this->tokenExpirationTime} sec", strtotime($this->tokenVerificationTime)));
             //
             $user = new User('me');
+
             Session::put('user', $user);
             //
             $this->save();

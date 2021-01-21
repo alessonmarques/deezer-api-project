@@ -66,7 +66,8 @@
 
         private function constructPath()
         {
-            $this->path         =   implode('/', array_filter([$this->service, $this->id, $this->method, $this->parameters]));
+            $this->path         =   implode('/', array_filter([$this->service, $this->id, $this->method]));
+            $this->path         .=  $this->parameters;
         }
 
     }
