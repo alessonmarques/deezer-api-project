@@ -20,8 +20,7 @@ class Podcast extends DeezerObject
         }
     }
 
-
-    function getPodcast($parameters = [])
+    function getEpisodes($parameters = [])
     {
         $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'episodes', $parameters);
         $podcastEpisodes = $this->communicate('', 'GET', $request);

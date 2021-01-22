@@ -22,27 +22,27 @@ class Genre extends DeezerObject
 
     function getArtists($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'artists', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'artists', $parameters);
         $data = json_encode([]);
-        $genreArtists = $this->communicate($data, 'POST', $request);
+        $genreArtists = $this->communicate($data, 'GET', $request);
 
         return $genreArtists;
     }
 
     function getPodcasts($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'podcasts', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'podcasts', $parameters);
         $data = json_encode([]);
-        $genrePodcasts = $this->communicate($data, 'POST', $request);
+        $genrePodcasts = $this->communicate($data, 'GET', $request);
 
         return $genrePodcasts;
     }
 
     function getRadios($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'radios', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'radios', $parameters);
         $data = json_encode([]);
-        $genreRadios = $this->communicate($data, 'POST', $request);
+        $genreRadios = $this->communicate($data, 'GET', $request);
 
         return $genreRadios;
     }
@@ -53,11 +53,11 @@ class Genre extends DeezerObject
     {
         $gridObjectData = new \stdClass();
 
-        $gridObjectData->cover         = $item->cover_medium;
+        $gridObjectData->cover         = $item->picture_medium;
         $gridObjectData->access_link   = route('front.home', []);
         $gridObjectData->play_link     = route('front.home.deezer.play', ['type' => $this::OBJECT_PLAYER_TYPE, 'id' => $item->id]);
         $gridObjectData->title         = $item->title;
-        $gridObjectData->description   = "{$item->nb_tracks} tracks";
+        $gridObjectData->description   = "{$item->fans} fans";
 
         return $gridObjectData;
     }

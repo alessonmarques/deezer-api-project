@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 use app\Support\Deezer;
+use app\Support\Genre;
 
 class FrontController extends Controller
 {
@@ -53,9 +54,10 @@ class FrontController extends Controller
             // $tracks     = $user->getRecommendations('tracks');
             $radios     = $user->getRecommendations('radios');
 
+            $flow       = $user->getFlow();
             $recents    = $user->getHistory();
 
-            $data = compact('recents', /*'tracks',*/ 'artists', 'radios', 'albums', 'playlists');
+            $data = compact('flow', 'recents', /*'tracks',*/ 'artists', 'radios', 'albums', 'playlists');
             return view('front.pages.music')->with('data', $data);
         }
         else
@@ -69,11 +71,14 @@ class FrontController extends Controller
 
         if($this->isLoggedIn())
         {
-            $user = Session::get('user');
+            $user   = Session::get('user');
+            $genre  = new Genre();
 
             $podcasts     = $user->getPodcasts();
+            $genres        = $genre->getPodcasts(['limit' => 10]);
 
-            $data = compact('podcasts');
+            $data = compact('podcasts', 'genres');
+
             return view('front.pages.show')->with('data', $data);
         }
         else

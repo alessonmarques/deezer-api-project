@@ -14,7 +14,7 @@
     <hr>
     <div    id="card_n#"
             class="card-deck card-list-itens"
-            style="width: 161vw" >
+            style="width: 162vw" >
 
         @foreach ($itens as $item)
             <?php
@@ -59,11 +59,11 @@
 
             ?>
 
-            <div class="card bg-dark" style="max-width: 277.77px" >
+            <div class="card bg-dark py-2" style="min-width: 280px; width: 280px; max-width: 280px" >
                 <div class="d-flex" >
                     <div class="card-img-top" >
                         <a href="{{ $access_link }}" >
-                            <img    class="card-img-top w-100"
+                            <img    class="card-img-top w-100 p-1"
                                     src="{{ $cover }}"
                                     alt="Card image cap" >
                         </a>

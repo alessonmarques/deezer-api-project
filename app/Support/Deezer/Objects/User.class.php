@@ -30,8 +30,15 @@ class User extends DeezerObject
         return $userPermissions;
     }
 
-    function getFlow()
+    function getFlow(Int $limit = 10)
     {
+        $parameters = ['limit' => $limit];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
         $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'flow');
         $userFlow = $this->communicate('', 'GET', $request);
 
