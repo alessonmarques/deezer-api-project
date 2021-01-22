@@ -6,8 +6,8 @@ use Illuminate\Support\Facades\Session;
 
 class Deezer extends ApiStandard
 {
-    const     APP_ID                = '456142';
-    const     APP_SECRET            = 'ca59d314407a78d2e3eb607633a7f212';
+    const     APP_ID                = '';
+    const     APP_SECRET            = '';
     const     APP_CALL_BACK_URL     = 'http://localhost/deezer-api-project/public/deez-callback';
 
     const     APP_PERMISSIONS       = 'basic_access,email,listening_history';

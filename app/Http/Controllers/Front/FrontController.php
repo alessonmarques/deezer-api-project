@@ -64,12 +64,17 @@ class FrontController extends Controller
         }
     }
 
-    public function showShows()
+    public function showPodcasts()
     {
 
         if($this->isLoggedIn())
         {
-            dd($_REQUEST);
+            $user = Session::get('user');
+
+            $podcasts     = $user->getPodcasts();
+
+            $data = compact('podcasts');
+            return view('front.pages.show')->with('data', $data);
         }
         else
         {

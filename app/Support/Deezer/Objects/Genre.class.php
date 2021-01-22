@@ -4,7 +4,8 @@ namespace app\Support;
 
 class Genre extends DeezerObject
 {
-    const OBJECT_SERVICE = 'genre';
+    const OBJECT_SERVICE        = 'genre';
+    const OBJECT_PLAYER_TYPE    = 'genre';
 
     protected $id;
 

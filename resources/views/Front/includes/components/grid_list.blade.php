@@ -4,6 +4,7 @@
     use app\Support\Playlist;
     use app\Support\Radio;
     use app\Support\Track;
+    use app\Support\Podcast;
 
 
 ?>
@@ -37,6 +38,9 @@
                     case 'track':
                         $deezerObject = new Track();
                     break;
+                    case 'podcast':
+                        $deezerObject = new Podcast();
+                    break;
 
                     default:
                         dd($item);
@@ -55,7 +59,7 @@
 
             ?>
 
-            <div class="card bg-dark" >
+            <div class="card bg-dark" style="max-width: 277.77px" >
                 <div class="d-flex" >
                     <div class="card-img-top" >
                         <a href="{{ $access_link }}" >

@@ -69,7 +69,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-music"></i></div>
                                 <span class="font-weight-bold">Musics</span>
                             </a>
-                            <a class="nav-link" href="{{route('front.home')}}">
+                            <a class="nav-link" href="{{route('front.home.deezer.show')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-microphone-alt"></i></div>
                                 <span class="font-weight-bold">Shows</span>
                             </a>

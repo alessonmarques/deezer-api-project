@@ -31,7 +31,7 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
                 Route::get('/', 'FrontController@showMusics');
             });
             Route::group(['prefix' => 'show', 'as' => '.show'], function() {
-                Route::get('/', 'FrontController@showShows');
+                Route::get('/', 'FrontController@showPodcasts');
             });
             Route::group(['prefix' => 'explore', 'as' => '.explore'], function() {
                 Route::get('/', 'FrontController@showExplores');

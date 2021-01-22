@@ -140,8 +140,15 @@ class User extends DeezerObject
         return $userPersonalSongs;
     }
 
-    function getPodcasts()
+    function getPodcasts(Int $limit = 10)
     {
+        $parameters = ['limit' => $limit];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
         $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'podcasts');
         $userPodcasts = $this->communicate('', 'GET', $request);
 
