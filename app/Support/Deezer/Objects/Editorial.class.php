@@ -21,7 +21,7 @@ class Editorial extends DeezerObject
 
     function getSelection($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'selection', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'selection', $parameters);
         $editorialSelection = $this->communicate('', 'GET', $request);
 
         return $editorialSelection;
@@ -29,7 +29,7 @@ class Editorial extends DeezerObject
 
     function getCharts($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'charts', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'charts', $parameters);
         $editorialCharts = $this->communicate('', 'GET', $request);
 
         return $editorialCharts;
@@ -37,7 +37,7 @@ class Editorial extends DeezerObject
 
     function getReleases($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'releases', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'releases', $parameters);
         $editorialReleases = $this->communicate('', 'GET', $request);
 
         return $editorialReleases;

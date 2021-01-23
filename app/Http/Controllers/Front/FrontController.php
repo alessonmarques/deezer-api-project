@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
 use app\Support\Deezer;
+use app\Support\Editorial;
 use app\Support\Genre;
 
 class FrontController extends Controller
@@ -51,13 +52,13 @@ class FrontController extends Controller
             $albums     = $user->getRecommendations('albums');
             $artists    = $user->getRecommendations('artists');
             $playlists  = $user->getRecommendations('playlists');
-            // $tracks     = $user->getRecommendations('tracks');
+            $tracks     = $user->getRecommendations('tracks');
             $radios     = $user->getRecommendations('radios');
 
             $flow       = $user->getFlow();
             $recents    = $user->getHistory();
 
-            $data = compact('flow', 'recents', /*'tracks',*/ 'artists', 'radios', 'albums', 'playlists');
+            $data = compact('flow', 'recents', 'tracks', 'artists', 'radios', 'albums', 'playlists');
             return view('front.pages.music')->with('data', $data);
         }
         else
@@ -74,7 +75,7 @@ class FrontController extends Controller
             $user   = Session::get('user');
             $genre  = new Genre();
 
-            $podcasts     = $user->getPodcasts();
+            $podcasts      = $user->getPodcasts();
             $genres        = $genre->getPodcasts(['limit' => 10]);
 
             $data = compact('podcasts', 'genres');
@@ -91,7 +92,14 @@ class FrontController extends Controller
     {
         if($this->isLoggedIn())
         {
-            dd($_REQUEST);
+            $genre      = new Genre();
+
+            $radios      = $genre->getRadios(['limit' => 10]);
+            $artists     = $genre->getArtists(['limit' => 10]);
+
+            $data = compact('radios', 'artists');
+
+            return view('front.pages.explore')->with('data', $data);
         }
         else
         {
@@ -103,7 +111,16 @@ class FrontController extends Controller
     {
         if($this->isLoggedIn())
         {
-            dd($_REQUEST);
+            $genre      = new Genre();
+
+            $radios      = $genre->getRadios(['limit' => 10]);
+            //$radios      = $genre->getRadios(['limit' => 10]);
+            //$radios      = $genre->getRadios(['limit' => 10]);
+            //$radios      = $genre->getRadios(['limit' => 10]);
+
+            $data = compact('radios');
+
+            return view('Front.pages.favourite')->with('data', $data);
         }
         else
         {

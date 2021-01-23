@@ -22,6 +22,7 @@ class Genre extends DeezerObject
 
     function getArtists($parameters = [])
     {
+
         $request = new ApiUrn($this::OBJECT_SERVICE, 'id', 'artists', $parameters);
         $data = json_encode([]);
         $genreArtists = $this->communicate($data, 'GET', $request);

@@ -73,28 +73,28 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-microphone-alt"></i></div>
                                 <span class="font-weight-bold">Shows</span>
                             </a>
-                            <a class="nav-link" href="{{route('front.home')}}">
+                            <a class="nav-link" href="{{route('front.home.deezer.explore')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-th-large"></i></div>
                                 <span class="font-weight-bold">Explore</span>
                             </a>
-                            <a class="nav-link" href="{{route('front.home')}}">
+                            <a class="nav-link" href="{{route('front.home.deezer.favourite')}}">
                                 <div class="sb-nav-link-icon"><i class="fas fa-heart"></i></div>
                                 <span class="font-weight-bold">Favourites</span>
                             </a>
                             <div class="small pl-4">
-                                <a class="nav-link" href="{{route('front.home')}}">
+                                <a class="nav-link" href="{{route('front.home.deezer.favourite.favourite_tracks')}}">
                                     Favourite tracks
                                 </a>
-                                <a class="nav-link" href="{{route('front.home')}}">
+                                <a class="nav-link" href="{{route('front.home.deezer.favourite.playlists')}}">
                                     Playlists
                                 </a>
-                                <a class="nav-link" href="{{route('front.home')}}">
+                                <a class="nav-link" href="{{route('front.home.deezer.favourite.albums')}}">
                                     Albums
                                 </a>
-                                <a class="nav-link" href="{{route('front.home')}}">
+                                <a class="nav-link" href="{{route('front.home.deezer.favourite.artists')}}">
                                     Artists
                                 </a>
-                                <a class="nav-link" href="{{route('front.home')}}">
+                                <a class="nav-link" href="{{route('front.home.deezer.favourite.podcasts')}}">
                                     Podcasts
                                 </a>
                             </div>
