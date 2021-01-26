@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use app\Support\Deezer;
 use app\Support\Editorial;
 use app\Support\Genre;
+use app\Support\Search;
 
 class FrontController extends Controller
 {
@@ -106,7 +107,7 @@ class FrontController extends Controller
             return $this->showLoginPage();
         }
     }
-
+    //
     public function showFavourites()
     {
         if($this->isLoggedIn())
@@ -114,9 +115,6 @@ class FrontController extends Controller
             $genre      = new Genre();
 
             $radios      = $genre->getRadios(['limit' => 10]);
-            //$radios      = $genre->getRadios(['limit' => 10]);
-            //$radios      = $genre->getRadios(['limit' => 10]);
-            //$radios      = $genre->getRadios(['limit' => 10]);
 
             $data = compact('radios');
 
@@ -128,11 +126,107 @@ class FrontController extends Controller
         }
     }
 
-    public function showSearchs()
+    public function showFavouriteTracks()
     {
         if($this->isLoggedIn())
         {
-            dd($_REQUEST);
+            $user   = Session::get('user');
+
+            $tracks      = $user->getTracks();
+
+            $data = compact('tracks');
+
+            return view('Front.pages.favourite')->with('data', $data);
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showFavouritePlaylists()
+    {
+        if($this->isLoggedIn())
+        {
+            $user   = Session::get('user');
+
+            $playlists      = $user->getPlaylists();
+
+            $data = compact('playlists');
+
+            return view('Front.pages.favourite')->with('data', $data);
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showFavouriteAlbums()
+    {
+        if($this->isLoggedIn())
+        {
+            $user   = Session::get('user');
+
+            $albums      = $user->getAlbums();
+
+            $data = compact('albums');
+
+            return view('Front.pages.favourite')->with('data', $data);
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showFavouriteArtists()
+    {
+        if($this->isLoggedIn())
+        {
+            $user   = Session::get('user');
+
+            $artists      = $user->getArtists();
+
+            $data = compact('artists');
+
+            return view('Front.pages.favourite')->with('data', $data);
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showFavouritePodcasts()
+    {
+        if($this->isLoggedIn())
+        {
+            $user   = Session::get('user');
+
+            $podcasts      = $user->getPodcasts();
+
+            $data = compact('podcasts');
+
+            return view('Front.pages.favourite')->with('data', $data);
+        }
+        else
+        {
+            return $this->showLoginPage();
+        }
+    }
+
+    public function showListeningHistory()
+    {
+        if($this->isLoggedIn())
+        {
+            $user   = Session::get('user');
+
+            $listening_history      = $user->getHistory(0);
+
+            $data = compact('listening_history');
+
+            return view('Front.pages.favourite')->with('data', $data)->with('listedData', true);
         }
         else
         {
@@ -144,15 +238,23 @@ class FrontController extends Controller
     {
         if($this->isLoggedIn())
         {
-            dd($_REQUEST);
+            $parameters = [ 'q' => $request->search_query, 'limit' => 0 ];
+
+            $search         = new Search();
+
+            $broad_search   = $search->getBroad($parameters);
+
+
+            $data = compact('broad_search');
+            $data = array_filter($data);
+
+            return view('Front.pages.search')->with('data', $data);
         }
         else
         {
             return $this->showLoginPage();
         }
     }
-
-    /*  */
 
     public function deezerLogin()
     {

@@ -15,8 +15,9 @@
         <link rel="stylesheet" href="{{ url(mix('front/css/swal.css')) }}">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
-        @yield('head-private')
+        @yield('header-private')
     </head>
+
     <body class="sb-nav-fixed bg-light-dark">
         <div class="clientMessage"></div>
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
@@ -24,13 +25,6 @@
             <button class="btn btn-link btn-sm order-1 order-lg-0" id="sidebarToggle" href="#"><i class="fas fa-bars"></i></button>
             <!-- Navbar Space-->
             <div class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
-
-            {{-- <div class="row pt-2 px-5 input-group input-group-lg">
-                <input class="form-control form-control-dark w-90 bg-dark text-white" type="text" placeholder="Search" aria-label="Search">
-                <button type="submit" class="btn btn-light">
-                    Search
-                </button>
-            </div> --}}
 
             <!-- Navbar-->
             <ul class="navbar-nav ml-auto ml-md-0">
@@ -108,4 +102,3 @@
                     </div>
                 </nav>
             </div>
-

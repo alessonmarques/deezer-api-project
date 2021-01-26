@@ -188,8 +188,15 @@ class User extends DeezerObject
         return $userRecommendations;
     }
 
-    function getTracks()
+    function getTracks(Int $limit = 10)
     {
+        $parameters = ['limit' => $limit];
+
+        if(isset($this->token) && !empty($this->token))
+        {
+            $parameters['access_token'] = $this->token;
+        }
+
         $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'tracks');
         $userTracks = $this->communicate('', 'GET', $request);
 

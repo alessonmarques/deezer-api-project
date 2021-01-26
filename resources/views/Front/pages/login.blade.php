@@ -16,24 +16,17 @@
     <link rel="stylesheet" href="{{ url(mix('front/css/swal.css')) }}">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
 
-    @yield('head-private')
 </head>
 <body class="sb-nav-fixed bg-dark">
 
     <div class="card-md">
         <div id="layoutSidenav_content">
-            {{-- <div class="container">
-                <div class="row">
-
-                </div>
-            </div> --}}
 
             <div class="row d-flex vh-100">
                 <div class="container d-flex align-items-center justify-content-center">
                     <div>
                         <div class="row">
                             <div class="logo">
-                                {{-- <img src="" alt="Logo" width="250" class="logo"> --}}
                                 <span class="h1 text-front text-center bold">deezer-api-project</span>
                             </div>
                         </div>

@@ -31,3 +31,17 @@
 .card-img-top:hover{
     filter: brightness(80%);
 }
+
+.card_img_artist{
+    border-radius: 50%;
+}
+.card_btn{
+    align-self: end;
+}
+.card_btn_artist{
+    //align-content: center;
+    padding-left: calc(50% - 44px);
+}
+.card_text_artist{
+    text-align: center;
+}

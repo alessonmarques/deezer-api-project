@@ -15,7 +15,7 @@ class Search extends DeezerObject
 
     function getBroad($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, '', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', '', $parameters);
         $searchAlbum = $this->communicate('', 'GET', $request);
 
         return $searchAlbum;
@@ -23,7 +23,7 @@ class Search extends DeezerObject
 
     function getAlbum($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'album', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'album', $parameters);
         $searchAlbum = $this->communicate('', 'GET', $request);
 
         return $searchAlbum;
@@ -31,7 +31,7 @@ class Search extends DeezerObject
 
     function getArtist($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'artist', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'artist', $parameters);
         $searchArtist = $this->communicate('', 'GET', $request);
 
         return $searchArtist;
@@ -39,7 +39,7 @@ class Search extends DeezerObject
 
     function getHistory($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'history', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'history', $parameters);
         $searchHistory = $this->communicate('', 'GET', $request);
 
         return $searchHistory;
@@ -47,7 +47,7 @@ class Search extends DeezerObject
 
     function getPlaylist($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'playlist', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'playlist', $parameters);
         $searchPlaylist = $this->communicate('', 'GET', $request);
 
         return $searchPlaylist;
@@ -55,7 +55,7 @@ class Search extends DeezerObject
 
     function getPodcast($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'podcast', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'podcast', $parameters);
         $searchPodcast = $this->communicate('', 'GET', $request);
 
         return $searchPodcast;
@@ -63,7 +63,7 @@ class Search extends DeezerObject
 
     function getRadio($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'radio', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'radio', $parameters);
         $searchRadio = $this->communicate('', 'GET', $request);
 
         return $searchRadio;
@@ -71,7 +71,7 @@ class Search extends DeezerObject
 
     function getTrack($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'track', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'track', $parameters);
         $searchTrack = $this->communicate('', 'GET', $request);
 
         return $searchTrack;
@@ -79,7 +79,7 @@ class Search extends DeezerObject
 
     function getUser($parameters = [])
     {
-        $request = new ApiUrn($this::OBJECT_SERVICE, $this->id, 'user', $parameters);
+        $request = new ApiUrn($this::OBJECT_SERVICE, '', 'user', $parameters);
         $searchUser = $this->communicate('', 'GET', $request);
 
         return $searchUser;

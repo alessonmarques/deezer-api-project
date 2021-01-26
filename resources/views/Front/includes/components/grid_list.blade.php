@@ -6,17 +6,18 @@
     use app\Support\Track;
     use app\Support\Podcast;
 
-
+    $title_tag = ucwords(implode(' ', explode('_', $type)));
 ?>
+
 <div    class="row py-2 px-2 d-block"
         style="overflow: hidden;">
-    <h4 class="font-weight-bold">{{ ucwords($type) }}</h4>
+    <h4 class="font-weight-bold">{{ $title_tag }}</h4>
     <hr>
     <div    id="card_n#"
             class="card-deck card-list-itens"
             style="width: 162vw" >
 
-        @foreach ($itens as $item)
+        @forelse ($itens as $item)
             <?php
 
                 $deezerObject       = new \stdClass();
@@ -47,7 +48,6 @@
                     break;
                 }
 
-
                 $gridObjectData    = $deezerObject->getGridData($item);
 
                 $cover             = $gridObjectData->cover;
@@ -56,19 +56,19 @@
                 $description       = $gridObjectData->description;
                 $access_link       = $gridObjectData->access_link;
                 $play_link         = $gridObjectData->play_link;
-
             ?>
 
-            <div class="card bg-dark py-2" style="min-width: 280px; width: 280px; max-width: 280px" >
+            <div    class="card bg-dark my-2"
+                    style="min-width: 280px; width: 280px; max-width: 280px" >
                 <div class="d-flex" >
                     <div class="card-img-top" >
                         <a href="{{ $access_link }}" >
-                            <img    class="card-img-top w-100 p-1"
+                            <img    class="card-img-top w-100 p-1 {{ 'card_img_'.$item->type }}"
                                     src="{{ $cover }}"
                                     alt="Card image cap" >
                         </a>
                     </div>
-                    <div    class="align-self-end"
+                    <div    class="card_btn {{ 'card_btn_'.$item->type }}"
                             style="position:absolute">
 
                             <a href="{{ $play_link }}">
@@ -77,11 +77,15 @@
                     </div>
                 </div>
 
-                <div    class="card-footer">
+                <div    class="card-footer {{ 'card_text_'.$item->type }}">
                     <span   class="card-text d-block">{{ $title }}</span>
                     <small  class="text-muted d-block">{{ $description }}</small>
                 </div>
             </div>
-        @endforeach
+        @empty
+            <div>
+                <h5 class="m-2">No registers found.</h5>
+            </div>
+        @endforelse
     </div>
 </div>

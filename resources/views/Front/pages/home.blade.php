@@ -16,4 +16,3 @@
 
 @section('foot-private')
 @stop
-

@@ -28,10 +28,9 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
 
             /*  OPTIONS */
             Route::group(['prefix' => 'search', 'as' => '.search'], function() {
-                Route::get('/', 'FrontController@showSearchs');
                 Route::post('/perform', 'FrontController@performSearch')->name('.perform');
             });
-            //
+            /*            */
             Route::group(['prefix' => 'music', 'as' => '.music'], function() {
                 Route::get('/', 'FrontController@showMusics');
             });
@@ -41,30 +40,30 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
             Route::group(['prefix' => 'explore', 'as' => '.explore'], function() {
                 Route::get('/', 'FrontController@showExploration');
             });
-            //
+            /*            */
             Route::group(['prefix' => 'favourite', 'as' => '.favourite'], function() {
                 //Highlights
                 Route::get('/', 'FrontController@showFavourites');
                 //Favourite tracks
-                Route::get('/favourite_tracks', 'FrontController@showFavourites')->name('.favourite_tracks');
+                Route::get('/favourite_tracks', 'FrontController@showFavouriteTracks')->name('.favourite_tracks');
                 //Playlist
-                Route::get('/playlists', 'FrontController@showFavourites')->name('.playlists');
+                Route::get('/playlists', 'FrontController@showFavouritePlaylists')->name('.playlists');
                 //Albums
-                Route::get('/albums', 'FrontController@showFavourites')->name('.albums');
+                Route::get('/albums', 'FrontController@showFavouriteAlbums')->name('.albums');
                 //Artists
-                Route::get('/artists', 'FrontController@showFavourites')->name('.artists');
+                Route::get('/artists', 'FrontController@showFavouriteArtists')->name('.artists');
                 //Podcasts
-                Route::get('/podcasts', 'FrontController@showFavourites')->name('.podcasts');
+                Route::get('/podcasts', 'FrontController@showFavouritePodcasts')->name('.podcasts');
                 //Listening history
-                Route::get('/listening_history', 'FrontController@showFavourites')->name('.listening_history');
+                Route::get('/listening_history', 'FrontController@showListeningHistory')->name('.listening_history');
                 //Mixes
-                Route::get('/mixes', 'FrontController@showFavourites')->name('.mixes');
+                Route::get('/mixes', 'FrontController@showMixes')->name('.mixes');
                 //My MP3s
-                Route::get('/mp3', 'FrontController@showFavourites')->name('.mp3');
+                Route::get('/mp3', 'FrontController@showMp3')->name('.mp3');
                 //Following
-                Route::get('/following', 'FrontController@showFavourites')->name('.following');
+                Route::get('/following', 'FrontController@showFollowing')->name('.following');
                 //Followers
-                Route::get('/followers', 'FrontController@showFavourites')->name('.followers');
+                Route::get('/followers', 'FrontController@showFollowers')->name('.followers');
 
             });
             //
