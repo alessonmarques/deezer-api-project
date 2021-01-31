@@ -30,11 +30,13 @@ First of all, you will need to configure two informations that Deezer will give 
 - In the sidebar you will find the application you've created.
 - Select the **Application ID** and **Secret Key** 
 
-Now, with that informations go to the project in **app\Support\Deezer\Deezer.class.php** and set the constants with the keys that Deezer.com has made available to you.
+Now, with that informations go to the project in **.env** and set the environment variables with the keys that Deezer.com has made available to you.
 
 ```php
-    const     APP_ID                = ''; // Application ID 
-    const     APP_SECRET            = ''; // Secret Key
+    // Application ID 
+    DEEZER_APP_ID=""
+    // Secret Key
+    DEEZER_APP_SECRET=""
 ```
 
 ### Todos

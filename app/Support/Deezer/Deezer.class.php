@@ -6,13 +6,6 @@ use Illuminate\Support\Facades\Session;
 
 class Deezer extends ApiStandard
 {
-    const     APP_ID                = '';
-    const     APP_SECRET            = '';
-    const     APP_CALL_BACK_URL     = 'http://localhost/deezer-api-project/public/deez-callback';
-
-    const     APP_PERMISSIONS       = 'basic_access,email,listening_history';
-
-    //
     public    $csrf;
     //
     protected $code;
@@ -23,8 +16,10 @@ class Deezer extends ApiStandard
     protected $tokenDestroyTime;
     //
 
+
     function __construct()
     {
+        ////////////////
         $baseUrl          =     'https://api.deezer.com/';
         $sslStatus        =     true;
         parent::__construct($baseUrl, $sslStatus);
@@ -56,9 +51,9 @@ class Deezer extends ApiStandard
     {
         $this->setCSRF();
 
-        $parameters = [ 'app_id'        => $this::APP_ID,
-                        'redirect_uri'  => $this::APP_CALL_BACK_URL,
-                        'perms'         => $this::APP_PERMISSIONS,
+        $parameters = [ 'app_id'        => env('DEEZER_APP_ID', ''),
+                        'redirect_uri'  => env('DEEZER_APP_CALL_BACK_URL', ''),
+                        'perms'         => env('DEEZER_PERMISSIONS', ''),
                         'state'         => $this->csrf,
                         'output'        => 'json'
                     ];
@@ -85,13 +80,13 @@ class Deezer extends ApiStandard
                 $this->save();
                 $this->generateAccessToken();
 
-                $urlDestino = route('front.home');
+                $destinationUrl = route('front.home');
 
                 echo "<script>
                             window.onunload = refreshParent;
                             function refreshParent()
                             {
-                                window.opener.location.href = '{$urlDestino}';
+                                window.opener.location.href = '{$destinationUrl}';
                             }
 
                             window.close();
@@ -109,8 +104,8 @@ class Deezer extends ApiStandard
 
         $this->setCSRF();
         //
-        $parameters = [ 'app_id'        => $this::APP_ID,
-                        'secret'        => $this::APP_SECRET,
+        $parameters = [ 'app_id'        => env('DEEZER_APP_ID', ''),
+                        'secret'        => env('DEEZER_APP_SECRET', ''),
                         'code'          => $this->code,
                         'state'         => $this->csrf,
                         'output'        => 'json'
