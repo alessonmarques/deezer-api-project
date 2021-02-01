@@ -14,18 +14,6 @@ use app\Support\Search;
 
 class FrontController extends Controller
 {
-    public function isLoggedIn()
-    {
-        if(Session::has('user'))
-        {
-            $user = Session::get('user');
-
-            if(date('Y-m-d H:i:s') >= $user->tokenDestroyTime) return false;
-
-            return true;
-        }
-        return false;
-    }
 
     public function showLoginPage()
     {
@@ -34,227 +22,170 @@ class FrontController extends Controller
 
     public function showHomePage()
     {
-        if($this->isLoggedIn())
-        {
-            return redirect(route('front.home.deezer.music'));
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+
+        return redirect(route('front.home.deezer.music'));
     }
-    /* */
+
     public function showMusics()
     {
-        if($this->isLoggedIn())
-        {
-            $user = Session::get('user');
 
-            $albums     = $user->getRecommendations('albums');
-            $artists    = $user->getRecommendations('artists');
-            $playlists  = $user->getRecommendations('playlists');
-            $tracks     = $user->getRecommendations('tracks');
-            $radios     = $user->getRecommendations('radios');
+        $user = Session::get('user');
 
-            $flow       = $user->getFlow();
-            $recents    = $user->getHistory();
+        $albums     = $user->getRecommendations('albums');
+        $artists    = $user->getRecommendations('artists');
+        $playlists  = $user->getRecommendations('playlists');
+        $tracks     = $user->getRecommendations('tracks');
+        $radios     = $user->getRecommendations('radios');
 
-            $data = compact('flow', 'recents', 'tracks', 'artists', 'radios', 'albums', 'playlists');
-            return view('front.pages.music')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $flow       = $user->getFlow();
+        $recents    = $user->getHistory();
+
+        $data = compact('flow', 'recents', 'tracks', 'artists', 'radios', 'albums', 'playlists');
+        return view('front.pages.music')->with('data', $data);
     }
 
     public function showPodcasts()
     {
 
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
-            $genre  = new Genre();
 
-            $podcasts      = $user->getPodcasts();
-            $genres        = $genre->getPodcasts(['limit' => 10]);
+        $user   = Session::get('user');
+        $genre  = new Genre();
 
-            $data = compact('podcasts', 'genres');
+        $podcasts      = $user->getPodcasts();
+        $genres        = $genre->getPodcasts(['limit' => 10]);
 
-            return view('front.pages.show')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('podcasts', 'genres');
+
+        return view('front.pages.show')->with('data', $data);
     }
 
     public function showExploration()
     {
-        if($this->isLoggedIn())
-        {
-            $genre      = new Genre();
 
-            $radios      = $genre->getRadios(['limit' => 10]);
-            $artists     = $genre->getArtists(['limit' => 10]);
+        $genre      = new Genre();
 
-            $data = compact('radios', 'artists');
+        $radios      = $genre->getRadios(['limit' => 10]);
+        $artists     = $genre->getArtists(['limit' => 10]);
 
-            return view('front.pages.explore')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('radios', 'artists');
+
+        return view('front.pages.explore')->with('data', $data);
     }
     //
     public function showFavourites()
     {
-        if($this->isLoggedIn())
-        {
-            $genre      = new Genre();
 
-            $radios      = $genre->getRadios(['limit' => 10]);
+        $genre      = new Genre();
 
-            $data = compact('radios');
+        $radios      = $genre->getRadios(['limit' => 10]);
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('radios');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showFavouriteTracks()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $tracks      = $user->getTracks();
+        $user   = Session::get('user');
 
-            $data = compact('tracks');
+        $tracks      = $user->getTracks();
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('tracks');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showFavouritePlaylists()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $playlists      = $user->getPlaylists();
+        $user   = Session::get('user');
 
-            $data = compact('playlists');
+        $playlists      = $user->getPlaylists();
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('playlists');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showFavouriteAlbums()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $albums      = $user->getAlbums();
+        $user   = Session::get('user');
 
-            $data = compact('albums');
+        $albums      = $user->getAlbums();
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('albums');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showFavouriteArtists()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $artists      = $user->getArtists();
+        $user   = Session::get('user');
 
-            $data = compact('artists');
+        $artists      = $user->getArtists();
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('artists');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showFavouritePodcasts()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $podcasts      = $user->getPodcasts();
+        $user   = Session::get('user');
 
-            $data = compact('podcasts');
+        $podcasts      = $user->getPodcasts();
 
-            return view('Front.pages.favourite')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('podcasts');
+
+        return view('Front.pages.favourite')->with('data', $data);
     }
 
     public function showListeningHistory()
     {
-        if($this->isLoggedIn())
-        {
-            $user   = Session::get('user');
 
-            $listening_history      = $user->getHistory(0);
+        $user   = Session::get('user');
 
-            $data = compact('listening_history');
+        $listening_history      = $user->getHistory(0);
 
-            return view('Front.pages.favourite')->with('data', $data)->with('listedData', true);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        $data = compact('listening_history');
+
+        return view('Front.pages.favourite')->with('data', $data)->with('listedData', true);
     }
 
     public function performSearch(Request $request)
     {
-        if($this->isLoggedIn())
-        {
-            $parameters = [ 'q' => $request->search_query, 'limit' => 0 ];
 
-            $search         = new Search();
+        $parameters = ['q' => $request->search_query, 'limit' => 0];
 
-            $broad_search   = $search->getBroad($parameters);
+        $search         = new Search();
+
+        $broad_search   = $search->getBroad($parameters);
 
 
-            $data = compact('broad_search');
-            $data = array_filter($data);
+        $data = compact('broad_search');
+        $data = array_filter($data);
 
-            return view('Front.pages.search')->with('data', $data);
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
+        return view('Front.pages.search')->with('data', $data);
     }
+
+    public function deezerPlay(Request $request)
+    {
+
+        $app = Session::get('app');
+
+        $app->track = new \stdClass();
+        $app->track->type   = $request->type;
+        $app->track->id     = $request->id;
+
+        Session::put('app', $app);
+
+        return redirect()->back();
+    }
+
 
     public function deezerLogin()
     {
@@ -280,27 +211,5 @@ class FrontController extends Controller
     {
         $app = new Deezer();
         return $app->generateAccessToken();
-    }
-
-    /* */
-
-    public function deezerPlay(Request $request)
-    {
-        if($this->isLoggedIn())
-        {
-            $app = Session::get('app');
-
-            $app->track = new \stdClass();
-            $app->track->type   = $request->type;
-            $app->track->id     = $request->id;
-
-            Session::put('app', $app);
-
-            return redirect()->back();
-        }
-        else
-        {
-            return $this->showLoginPage();
-        }
     }
 }

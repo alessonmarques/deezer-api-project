@@ -31,7 +31,7 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="userDropdown" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user fa-fw text-front"></i></a>
                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="{{route('front.home.deezer.logout')}}">Logout</a>
+                        <a class="dropdown-item" href="{{route('front.access.logout')}}">Logout</a>
                     </div>
                 </li>
             </ul>

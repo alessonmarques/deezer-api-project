@@ -32,10 +32,10 @@
                         </div>
                         <div class="row card p-5">
                             <div class="form-group my-3">
-                                <a href="{{ route('front.home.deezer.login') }}"
+                                <a href="{{ route('front.access.login') }}"
                                     target="popup"
                                     class="btn btn-block btn-front"
-                                    onclick="window.open('{{route('front.home.deezer.login')}}','popup','width=800,height=475'); return false;">
+                                    onclick="window.open('{{route('front.access.login')}}','popup','width=800,height=475'); return false;">
                                     Login
                                 </a>
                             </div>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\DeezerMiddleware;
 use Illuminate\Support\Facades\Route;
 
 use Illuminate\Support\Facades\Session;
@@ -18,7 +19,23 @@ use Illuminate\Support\Facades\Session;
 
 
 Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], function() {
-    Route::group(['prefix' => '', 'as' => 'home'], function() {
+    /*  FRONT LOGIN */
+    Route::get('/login', 'FrontController@showLoginPage')->name('login');
+
+    /*  ACCESS CONTROL */
+    Route::group(['prefix' => '', 'as' => 'access'], function() {
+        /*  DEBUG */
+        Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
+
+
+        Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
+        Route::get('/deez-token', 'FrontController@deezerGetToken')->name('.token');
+        Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');
+        Route::get('/deez-logout', 'FrontController@deezerLogout')->name('.logout');
+    });
+
+    /*  HOME */
+    Route::group(['prefix' => '', 'as' => 'home', 'middleware' => ['deez']], function() {
         Route::get('/', 'FrontController@showHomePage');
 
         /*  DEEZER */
@@ -66,15 +83,8 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
                 Route::get('/followers', 'FrontController@showFollowers')->name('.followers');
 
             });
-            //
-            /*  DEBUG */
-            Route::get('/debug-deezer', 'FrontController@debugDeezer')->name('.debug');
 
-            /*  ACCESS CONTROL */
-            Route::get('/deez-login', 'FrontController@deezerLogin')->name('.login');
-            Route::get('/deez-token', 'FrontController@deezerGetToken')->name('.token');
-            Route::get('/deez-callback', 'FrontController@deezerLoginCallBack')->name('.callback');
-            Route::get('/deez-logout', 'FrontController@deezerLogout')->name('.logout');
         });
     });
+
 });
