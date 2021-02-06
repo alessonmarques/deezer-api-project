@@ -1,3 +1,9 @@
+<?php
+    if(isset($data['broad_search']->error->message) && !empty($data['broad_search']->error->message))
+    {
+        $data = [];
+    }
+?>
 @extends('Front.internal_page_layout')
 
 @section('head-private')

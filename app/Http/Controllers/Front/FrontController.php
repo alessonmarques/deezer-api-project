@@ -158,18 +158,18 @@ class FrontController extends Controller
 
     public function performSearch(Request $request)
     {
-
-        $parameters = ['q' => $request->search_query, 'limit' => 0];
+        $query = isset($request->search_query) && !empty($request->search_query) ? $request->search_query : '';
+        $parameters = ['q' => $query, 'limit' => 0];
 
         $search         = new Search();
 
         $broad_search   = $search->getBroad($parameters);
 
-
         $data = compact('broad_search');
         $data = array_filter($data);
 
         return view('Front.pages.search')->with('data', $data);
+
     }
 
     public function deezerPlay(Request $request)

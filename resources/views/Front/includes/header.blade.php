@@ -42,13 +42,12 @@
                     <div class="sb-sidenav-footer d-flex justify-content-center">
                         <div class="d-block">
                             <div class="row d-flex justify-content-center">
-                                <img src="{{ $user->picture }}" title="{{'@'. $user->name }} profile picture"  width="120px" style="border: 2px solid #dee3ec; border-radius: 50%">
+                                <img src="{{ $user->picture }}" title="{{'@'. $user->name }} profile picture"  width="120px" style="width:120px; height:120px; border: 2px solid #dee3ec; border-radius: 50%">
                             </div>
                             <div class="row d-flex justify-content-center">
                                 <span class="text-white my-2">
                                     <a href="{{ route('front.home') }}">
                                         <button type="button" class="btn btn-dark font-weight-bold">
-
                                             {{ $user->firstname }} {{ $user->lastname }}
                                         </button>
                                     </a>
