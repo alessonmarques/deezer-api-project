@@ -36,7 +36,9 @@ Route::group(['prefix' => '', 'namespace' => 'Front', 'as' => 'front.'], functio
 
     /*  HOME */
     Route::group(['prefix' => '', 'as' => 'home', 'middleware' => ['deez']], function() {
-        Route::get('/', 'FrontController@showHomePage');
+        //Route::get('/', 'FrontController@showHomePage');
+        Route::view('/', 'front.pages.home');
+
 
         /*  DEEZER */
         Route::group(['prefix' => '', 'as' => '.deezer'], function() {

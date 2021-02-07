@@ -22,7 +22,6 @@ class FrontController extends Controller
 
     public function showHomePage()
     {
-
         return redirect(route('front.home.deezer.music'));
     }
 

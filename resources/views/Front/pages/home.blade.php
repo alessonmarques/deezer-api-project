@@ -9,9 +9,9 @@
 
 
 @section('internal_content')
-    <div class="row pt-2 px-2">
 
-    </div>
+    <example-component />
+
 @stop
 
 @section('foot-private')

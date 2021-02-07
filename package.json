@@ -20,7 +20,8 @@
     "resolve-url-loader": "^2.3.1",
     "sass": "^1.15.2",
     "sass-loader": "^7.1.0",
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-template-compiler": "^2.6.12"
   },
   "name": "deezer-api-project",
   "description": "<p align=\"center\"><img src=\"https://laravel.com/assets/img/components/logo-laravel.svg\"></p>",
@@ -46,6 +47,7 @@
   "homepage": "https://github.com/alessonmarques/deezer-api-project#readme",
   "dependencies": {
     "bootstrap-select": "^1.13.18",
-    "bootstrap-sweetalert": "^1.0.1"
+    "bootstrap-sweetalert": "^1.0.1",
+    "vuex": "^3.6.2"
   }
 }

@@ -4,10 +4,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-        @include('front.includes.header', $data)
+    @include('front.includes.header', $data)
 
-        @yield('content')
+    @yield('content')
 
-        @include('front.includes.footer', $data)
-
+    @include('front.includes.footer', $data)
 </html>

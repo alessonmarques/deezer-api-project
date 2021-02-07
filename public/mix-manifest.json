@@ -1,9 +1,10 @@
 {
+    "/js/app.js": "/js/app.js?id=938ebb15f9a6337ad814",
     "/front/css/reset.css": "/front/css/reset.css?id=34be464084376766ff1f",
     "/front/css/app.css": "/front/css/app.css?id=08b44243bf22f2a5827d",
     "/front/css/sb_admin.css": "/front/css/sb_admin.css?id=526abba7fb57d86ecf90",
     "/front/css/swal.css": "/front/css/swal.css?id=c928a292dc96109ff84b",
-    "/front/js/main.js": "/front/js/main.js?id=ff5630b5635870c03903",
+    "/front/js/main.js": "/front/js/main.js?id=5b5972a3778ca262cec0",
     "/front/js/jquery.min.js": "/front/js/jquery.min.js?id=fb8409a092adc6e8be17",
     "/front/js/bootstrap.bundle.min.js": "/front/js/bootstrap.bundle.min.js?id=7f389f5d2622ce2090ec",
     "/front/js/swal.min.js": "/front/js/swal.min.js?id=0e2613ca4d17a624d7e9",

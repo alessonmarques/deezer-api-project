@@ -12,7 +12,8 @@ const { VERSION } = require('lodash');
  |
  */
 
-mix
+mix .js('resources/js/app.js', 'public/js/app.js')
+
     .sass('resources/views/front/assets/scss/reset.scss', 'public/front/css/reset.css')
     .sass('resources/views/front/assets/scss/app.scss', 'public/front/css/app.css')
     //
@@ -28,7 +29,6 @@ mix
         'resources/views/front/assets/js/_lib.js',
         'resources/views/front/assets/js/main.js',
     ], 'public/front/js/main.js')
-
 
     .scripts([
         'resources/views/front/assets/js/jquery.slim.min.js',
